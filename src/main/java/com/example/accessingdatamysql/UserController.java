@@ -23,8 +23,20 @@ public class UserController {
         return userRepository.findAll();
     }
     @GetMapping("/{id}")
-    User one(@PathVariable Integer id){
+    public @ResponseBody User getUser(@PathVariable Integer id){
         return userRepository.findById(id).get();
     }
-
+    @DeleteMapping("/{id}")
+    public @ResponseBody User deleteUser(@PathVariable Integer id){
+        userRepository.deleteById(id);
+        return null;
+    }
+    @PutMapping("/{id}")
+    public @ResponseBody
+   User updateUser(@PathVariable(value = "id") Long Id, @RequestBody User user) {
+        user.setName(user.getName());
+        user.setEmail(user.getEmail());
+        userRepository.save(user);
+        return user;
+    }
 }
