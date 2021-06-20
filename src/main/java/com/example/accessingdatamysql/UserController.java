@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(path = "/demo")
+@RequestMapping(path = "/user")
 
 public class UserController {
     @Autowired
@@ -21,6 +21,10 @@ public class UserController {
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<User> getAllUsers(){
         return userRepository.findAll();
+    }
+    @GetMapping("/{id}")
+    User one(@PathVariable Integer id){
+        return userRepository.findById(id).get();
     }
 
 }
