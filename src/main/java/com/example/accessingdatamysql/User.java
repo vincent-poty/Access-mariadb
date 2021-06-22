@@ -11,13 +11,15 @@ public class User {
     private @Id @GeneratedValue Integer id;
     private String name;
     private String email;
+    private String phone;
 
     public User() {
     }
 
-    public User(String name, String email) {
+    public User(String name, String email, String phone) {
         this.name = name;
         this.email = email;
+        this.phone = phone;
     }
 
     public Integer getId() {
@@ -43,4 +45,15 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }
+
+
+
